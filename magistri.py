@@ -1,3 +1,5 @@
+import os
+
 from libmagistri import *
 from getpass import getpass
 from predvidac import Predvidac
@@ -98,7 +100,6 @@ while True:
         for i in rozvrh:
             write(i + " ", " ")
             for k in range(2):
-                #write(k)
                 if k == 1: write("  ", "  ")
                 for j in rozvrh[i]:
                     if j["subject"] == None:
@@ -133,7 +134,10 @@ while True:
                 
                 write("")
     elif command.startswith("predvidac"):
-        __import__("os").system("clear")
+        if command == "predvidac":
+            write("Chyba: Zadej předmět, jehož známky se mají použít.")
+            continue
+        os.system("clear")
         predmet = command.split()[1]
         predmet += " " * (4 - len(predmet))
         print(predmet, znamky.keys())
@@ -146,7 +150,7 @@ while True:
         try:
             p.spustit()
         except SystemExit:
-            pass
+            os.system("clear")
     
     elif command in ["exit", "quit", "ukoncit", "zavrit"]:
         exit()
