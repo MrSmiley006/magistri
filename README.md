@@ -1,2 +1,2 @@
-# magistri
+# Magistři
 Svobodný klient pro Bakaláře
